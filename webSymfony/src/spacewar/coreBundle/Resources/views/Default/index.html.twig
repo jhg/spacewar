@@ -53,8 +53,8 @@
             <!-- Links for navigation -->
             <ul class="nav navbar-nav" data-ng-controller="navbarCtrl">
             {% block nav %}
-                {% raw %}<li data-ng-class="{ active: isActive('/') }">
-                {% endraw %}<a href="/">Home</a></li>
+                <li data-ng-class="{ active: isActive('{{ path('core_index') }}') }">
+                <a href="{{ path('core_index') }}">Home</a></li>
                 {#<li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         Dropdown <span class="caret"></span>
@@ -71,33 +71,8 @@
         Hello!
     </section>#}{% endblock %}
 
-    <!-- Login modal -->
-    <aside class="modal fade" id="loginModal">
-        <div class="modal-dialog modal-content">
-            <!-- Login header and button close -->
-            <header class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">
-                    <span>&times;</span>
-                </button>
-                <h4 class="modal-title" id="myModalLabel">
-                    Please sign in
-                </h4>
-            </header>
-            <!-- Login form -->
-            <form class="modal-body form-signin">
-                <label for="inputEmail" class="sr-only">Email address</label>
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-                <label for="inputPassword" class="sr-only">Password</label>
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                {# <div class="checkbox"><label>
-                    <input type="checkbox" value="remember-me"> Remember me
-                </label></div> #}
-                <button class="btn btn-lg btn-primary btn-block" type="submit">
-                    Sign in
-                </button>
-            </form>
-        </div>
-    </aside>
+    {# Login modal #}
+    {{ include('coreBundle:Default:login_modal_form.html.twig') }}
 
 {% endblock %}</body>
 </html>
